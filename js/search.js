@@ -185,3 +185,37 @@ function getCars() {
     }
   ];
 }
+
+// Search terms object
+let searchFields = {
+  make: "",
+  year: "",
+  min: "",
+  max: "",
+  doors: "",
+  transmission: "",
+  cplor: ""
+};
+
+// Event Listener for DOM Loaded
+document.addEventListener("DOMContentLoaded", () => {
+  const cars = getCars();
+  showCars(cars);
+});
+
+function showCars(cars) {
+  // get the container
+  const container = document.querySelector("#result");
+  // build the HTML and print the data in the container
+  cars.forEach(car => {
+    const carHTML = document.createElement("p");
+    carHTML.innerHTML = `
+      ${car.make} ${car.carmodel} - ${car.year} - ${
+      car.doors
+    } Doors - Transmission: ${car.transmission} - Price: ${
+      car.price
+    } - Color: ${car.color} 
+    `;
+    container.appendChild(carHTML);
+  });
+}
